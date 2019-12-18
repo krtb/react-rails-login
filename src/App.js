@@ -18,6 +18,13 @@ class App extends Component {
     })
   }
 
+  handleLogout = () => {
+    this.setState({
+      isLoggedIn: false,
+      user: {}
+    })
+  }
+
   // app won't render itself to DOM
   // will serve as our router to render all other components
   // will also manage the application’s state and authentication status
