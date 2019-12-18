@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 
 const Home = (props) => {
 
+    // handle the logout functionality
+    // 1) update the isLoggedIn state in our front - end to false and remove the User data
+    // 2) logout the User on the back - end server
     const handleClick = () => {
         // logout functionality here
     }
@@ -16,7 +19,7 @@ const Home = (props) => {
             <Link to='/signup'>Sign Up</Link>
 
             <br></br>
-            
+
             {/* displaying the link only if the User is logged in */}
             {
                 props.loggedInStatus ?
