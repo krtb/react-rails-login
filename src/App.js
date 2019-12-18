@@ -25,8 +25,12 @@ class App extends Component {
     })
   }
 
-  // GET API response data
   loginStatus = () => {
+    // GET API response data
+
+    // {withCredentials: true}, allows our Rails server to set and read the cookie on the front-end’s browser
+    // always pass this arg
+
     axios.get('http://localhost:3001/logged_in',
       { withCredentials: true })
       .then(response => {
