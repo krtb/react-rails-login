@@ -63,6 +63,14 @@ class App extends Component {
   // will also manage the application’s state and authentication status
 
   render() {
+    // rendering components using render=props
+    // allows us to pass props to the components to be rendered
+    // in this way, we can pass 
+    // isLoggedIn state status, handleLogin(), and handleLogout(), 
+    // to our components as props
+
+    // can also pass the User object from state down to the necessary components, not passing User currently
+
     return (
       <div>
 
@@ -70,9 +78,26 @@ class App extends Component {
 
           <Switch>
 
-            <Route exact path='/' component={} />
-            <Route exact path='/login' component={} />
-            <Route exact path='/signup' component={} />
+            <Route
+              exact path='/'
+              render={props => (
+                <Home {...props} loggedInStatus={this.state.isLoggedIn} />
+              )}
+            />
+
+            <Route
+              exact path='/login'
+              render={props => (
+                <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
+              )}
+            />
+
+            <Route
+              exact path='/signup'
+              render={props => (
+                <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
+              )}
+            />
 
           </Switch>
 
