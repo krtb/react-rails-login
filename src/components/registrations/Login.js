@@ -22,6 +22,37 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+
+        const { username, email, password } = this.state
+
+        let user = {
+            username: username,
+            email: email,
+            password: password
+        }
+
+        // creating a user object based on the component’s state. 
+        // This is the data argument that axios will POST to the Rails server for authentication
+
+        // also passing {withCredentials: true}. Pass this in the header as it’s what allows Rails to set the cookie!
+
+        axios.post('http://localhost:3001/login', { user }, { withCredentials: true })
+            .then(response => {
+                if (response.data.logged_in) {
+                    // if valid, call App.js' handleLogin() method, 
+                    // which will change the app’s isLogged_in status.
+
+                    this.props.handleLogin(response.data)
+                    this.redirect()
+                } else {
+                    //  Else, the server responds with errors and we set the state’s errors attribute
+                    
+                    this.setState({
+                        errors: response.data.errors
+                    })
+                }
+            })
+            .catch(error => console.log('api errors:', error))
     };
 
     render() {
