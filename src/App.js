@@ -31,14 +31,21 @@ class App extends Component {
     // {withCredentials: true}, allows our Rails server to set and read the cookie on the front-end’s browser
     // always pass this arg
 
+    // Rails /logged_in, route and its corresponding controller action
+    // App.js component communicates with Rails through this route 
+    // If the User is verified in the Rails server, then a logged_in boolean is returned, along with the user object
+    // App.js uses this response data to maintain the logged in status in the front-end
+
     axios.get('http://localhost:3001/logged_in',
       { withCredentials: true })
       .then(response => {
+
         if (response.data.logged_in) {
           this.handleLogin(response)
         } else {
           this.handleLogout()
         }
+
       })
       .catch(error => console.log('api errors:', error))
   }
