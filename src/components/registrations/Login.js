@@ -79,6 +79,12 @@ class Login extends Component {
         this.props.history.push('/')
     }
 
+    componentWillMount() {
+        // render or prevent rendering of content
+        // prevent nav to /login route if User is logged in
+        return this.props.loggedInStatus ? this.redirect() : null
+    }
+
     render() {
         const { username, email, password } = this.state
 
