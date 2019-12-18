@@ -61,11 +61,15 @@ class Signup extends Component {
             <div>
                 <ul>
                     {this.state.errors.map(error => {
-                        return <li key={error}>{error}</li>
+                        return <li key={error}> {error} </li>
                     })}
                 </ul>
             </div>
         )
+    }
+
+    redirect = () => {
+        this.props.history.push('/')
     }
 
     render() {
