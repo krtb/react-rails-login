@@ -72,6 +72,12 @@ class Login extends Component {
         )
     }
 
+    redirect = () => {
+        //  redirect the User if the server responds with a valid authentication
+        //  have access to the history props passed to us from react-router-dom,
+        //  when we use render=props on App.js
+        this.props.history.push('/')
+    }
 
     render() {
         const { username, email, password } = this.state
