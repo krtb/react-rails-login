@@ -11,6 +11,15 @@ class Login extends Component {
         errors: ''
     }
 
+    handleChange = (event) => {
+        const { name, value } = event.target
+
+        this.setState({
+            [name]: value
+        })
+        
+    };
+
     render() {
         const { username, email, password } = this.state
 
