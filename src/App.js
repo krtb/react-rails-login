@@ -50,6 +50,11 @@ class App extends Component {
       .catch(error => console.log('api errors:', error))
   }
 
+  componentDidMount() {
+    // keep track of status and request this information every time it’s mounted
+    this.loginStatus()
+  }
+
   // app won't render itself to DOM
   // will serve as our router to render all other components
   // will also manage the application’s state and authentication status
