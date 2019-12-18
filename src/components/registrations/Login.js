@@ -17,7 +17,11 @@ class Login extends Component {
         this.setState({
             [name]: value
         })
-        
+
+    };
+
+    handleSubmit = (event) => {
+        event.preventDefault()
     };
 
     render() {
