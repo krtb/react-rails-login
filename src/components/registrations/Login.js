@@ -55,6 +55,19 @@ class Login extends Component {
             .catch(error => console.log('api errors:', error))
     };
 
+    handleErrors = () => {
+        return (
+            <div>
+                <ul>
+                {this.state.errors.map((error) => {
+                    return <li key={error} > { error }</li>
+                    })
+                }
+                </ul> 
+            </div >
+        )
+    }
+
     render() {
         const { username, email, password } = this.state
 
