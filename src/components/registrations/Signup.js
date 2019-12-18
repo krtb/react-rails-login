@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 class Signup extends Component {
 
-    // password_confirmation
+    // password_confirmation attribute,
     // for bcrypt in Rails
+
+    // errors attribute ,
+    // to handle response errors from the server
     state = {
         username: '',
         email: '',
