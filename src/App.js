@@ -25,6 +25,20 @@ class App extends Component {
     })
   }
 
+  // GET API response data
+  loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in',
+      { withCredentials: true })
+      .then(response => {
+        if (response.data.logged_in) {
+          this.handleLogin(response)
+        } else {
+          this.handleLogout()
+        }
+      })
+      .catch(error => console.log('api errors:', error))
+  }
+
   // app won't render itself to DOM
   // will serve as our router to render all other components
   // will also manage the application’s state and authentication status
