@@ -28,7 +28,7 @@ class Signup extends Component {
     };
 
     handleSubmit = (event) => {
-        
+
         event.preventDefault()
 
         const { username, email, password } = this.state
@@ -54,6 +54,18 @@ class Signup extends Component {
             })
             .catch(error => console.log('api errors:', error))
     };
+
+    handleErrors = () => {
+        return (
+            <div>
+                <ul>
+                    {this.state.errors.map(error => {
+                        return <li key={error}>{error}</li>
+                    })}
+                </ul>
+            </div>
+        )
+    }
 
     render() {
 
@@ -97,6 +109,13 @@ class Signup extends Component {
                     </button>
 
                 </form>
+
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
+                
             </div>
         );
     }
