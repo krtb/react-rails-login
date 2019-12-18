@@ -56,6 +56,10 @@ class Login extends Component {
     };
 
     handleErrors = () => {
+        // IF error attribute evaluates to true, 
+        // the handleErrors() method is called in the component’s render() method 
+        // and displays these errors to the user
+
         return (
             <div>
                 <ul>
@@ -67,6 +71,7 @@ class Login extends Component {
             </div >
         )
     }
+
 
     render() {
         const { username, email, password } = this.state
@@ -104,6 +109,11 @@ class Login extends Component {
                     </div>
 
                 </form>
+                <div>
+                    {
+                        this.state.errors ? this.handleErrors() : null
+                    }
+                </div>
             </div>
         );
     }
