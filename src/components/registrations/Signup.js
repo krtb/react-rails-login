@@ -28,21 +28,22 @@ class Signup extends Component {
     };
 
     handleSubmit = (event) => {
-
+        
         event.preventDefault()
 
-        const { username, email, password } = this.state
+        const { username, email, password, password_confirmation } = this.state
 
         let user = {
             username: username,
             email: email,
-            password: password
+            password: password,
+            password_confirmation: password_confirmation
         }
 
-        axios.post('http://localhost:3001/login', { user }, { withCredentials: true })
+        axios.post('http://localhost:3001/users', { user }, { withCredentials: true })
             .then(response => {
 
-                if (response.data.logged_in) {
+                if (response.data.status === 'created') {
                     this.props.handleLogin(response.data)
                     this.redirect()
                 } else {
@@ -115,7 +116,7 @@ class Signup extends Component {
                         this.state.errors ? this.handleErrors() : null
                     }
                 </div>
-                
+
             </div>
         );
     }
